@@ -8,14 +8,37 @@ window.onload = function() {
                 tizen.application.getCurrentApplication().exit();
             } catch (ignore) {}
         }
-    });
-
-    // Sample code
-    var mainPage = document.querySelector('#main');
-
-    mainPage.addEventListener("click", function() {
-        var contentText = document.querySelector('#content-text');
-
-        contentText.innerHTML = (contentText.innerHTML === "Basic") ? "Tizen" : "Basic";
-    });
+    });   
 };
+
+function log(from , msg) {
+	console.log('!' + from + ' says ' + msg + '!');
+}
+
+//The vars
+var engine,
+canvas,
+scene;
+
+//The main init function
+function init() {
+	engine = initEngine();
+}
+
+function initEngine() {
+	canvas = document.getElementById('screen');
+	log(canvas, " found");
+	var engine = new BABYLON.Engine(canvas, true);
+	return engine;
+}
+
+function createScene() {
+	  scene = new BABYLON.Scene(engine);
+	  engine.runRenderLoop(loop);
+	}
+
+//main loop function
+function loop() {
+	scene.render();
+	
+}
