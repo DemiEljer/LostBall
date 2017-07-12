@@ -8,8 +8,15 @@ window.onload = function() {
                 tizen.application.getCurrentApplication().exit();
             } catch (ignore) {}
         }
-    });   
+    });
 };
+
+function func() {
+	let field = new Field([5, 5], 5, 10);
+    field.CreateStartPoint([3, 3]);
+    field.AllPaths();
+}
+
 
 function log(from , msg) {
 	console.log('!' + from + ' says ' + msg + '!');
@@ -18,7 +25,8 @@ function log(from , msg) {
 //The vars
 var engine,
 canvas,
-scene;
+scene,
+field;
 
 //The main init function
 function init() {
